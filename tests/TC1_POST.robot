@@ -8,11 +8,11 @@ ${api_key}         reqres-free-v1
 
 * Test Cases ***
 Get Info With API Key
-    &{headers}=    Create Dictionary    x-api-key=${api_key}
-    Create Session    mySession    ${base_url}    headers=${headers}
+    Create Session    mySession    ${base_url}
+    &{headers}=    Create Dictionary    x-api-key=${api_key}    Content-Type=application/json
     ${body}=    Create Dictionary   name=pawan      job=trainer
-    ${header}=      Create Dictionary   Content-Type=application/json
-    ${response}=        Post Request    mySession    ${endpoint}      data=${body}    headers=${header}
+    #${header}=      Create Dictionary   Content-Type=application/json
+    ${response}=        Post Request    mySession    ${endpoint}      data=${body}      headers=${headers}
     
     
     Log To Console    ${response.status_code}

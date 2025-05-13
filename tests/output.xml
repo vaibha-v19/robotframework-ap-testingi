@@ -1,93 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.13.2 on win32)" generated="2025-05-12T09:41:01.819773" rpa="false" schemaversion="5">
-<suite id="s1" name="TC1 DELETE" source="C:\Users\z0053u3m\PycharmProjects\ApiAutomation\tests\TC1_DELETE.robot">
-<test id="s1-t1" name="Get Info With API Key" line="10">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-05-12T09:41:02.303460" level="INFO">&amp;{headers} = { x-api-key=reqres-free-v1 }</msg>
-<var>&amp;{headers}</var>
-<arg>x-api-key=${api_key}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-05-12T09:41:02.303167" elapsed="0.000333"/>
-</kw>
+<robot generator="Robot 7.2.2 (Python 3.13.2 on win32)" generated="2025-05-13T09:11:23.602244" rpa="false" schemaversion="5">
+<suite id="s1" name="TC Basic GET" source="C:\Users\z0053u3m\PycharmProjects\ApiAutomation\tests\TC_Basic_GET.robot">
+<test id="s1-t1" name="Get Info With Basic Auth" line="11">
 <kw name="Create Session" owner="RequestsLibrary">
-<msg time="2025-05-12T09:41:02.304058" level="INFO">Creating Session using : alias=mySession, url=https://reqres.in, headers={'x-api-key': 'reqres-free-v1'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg time="2025-05-13T09:11:24.055415" level="INFO">Creating Session using : alias=mySession, url=https://httpbin.org, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
 <arg>mySession</arg>
 <arg>${base_url}</arg>
-<arg>headers=${headers}</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2025-05-12T09:41:02.303857" elapsed="0.000343"/>
+<status status="PASS" start="2025-05-13T09:11:24.055238" elapsed="0.000354"/>
 </kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-05-12T09:41:02.304693" level="INFO">${body} = {'name': 'pawan', 'job': 'engineer'}</msg>
-<var>${body}</var>
-<arg>name=pawan</arg>
-<arg>job=engineer</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-05-12T09:41:02.304521" elapsed="0.000195"/>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-05-13T09:11:24.055981" level="INFO">${auth} = ['user', 'passwd']</msg>
+<var>${auth}</var>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-05-13T09:11:24.055806" elapsed="0.000198"/>
 </kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-05-12T09:41:02.305130" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-05-12T09:41:02.305016" elapsed="0.000132"/>
-</kw>
-<kw name="Delete Request" owner="RequestsLibrary">
-<msg time="2025-05-12T09:41:02.305467" level="WARN">Keyword 'RequestsLibrary.Delete Request' is deprecated. Please use `DELETE On Session` instead.</msg>
-<msg time="2025-05-12T09:41:03.345712" level="INFO">DELETE Request : url=https://reqres.in/api/users/599 
- path_url=/api/users/599 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'x-api-key': 'reqres-free-v1', 'Content-Type': 'application/json', 'Content-Length': '36'} 
- body={"name": "pawan", "job": "engineer"} 
- </msg>
-<msg time="2025-05-12T09:41:03.345867" level="INFO">DELETE Response : url=https://reqres.in/api/users/599 
- status=204, reason=No Content 
- headers={'Date': 'Mon, 12 May 2025 04:11:03 GMT', 'Connection': 'keep-alive', 'Server': 'cloudflare', 'Cf-Ray': '93e711e3aa753b67-BOM', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1747023063&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=ZyhTY4eYF80YCtg6o4DnV1j%2BPqqSw0adsKHqk%2FZrFg8%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1747023063&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=ZyhTY4eYF80YCtg6o4DnV1j%2BPqqSw0adsKHqk%2FZrFg8%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Ratelimit-Policy': '100;w=60', 'Ratelimit-Limit': '100', 'Ratelimit-Remaining': '98', 'Ratelimit-Reset': '60', 'Etag': 'W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"', 'Via': '1.1 vegur', 'Cf-Cache-Status': 'DYNAMIC', 'server-timing': 'cfL4;desc="?proto=TCP&amp;rtt=1419&amp;min_rtt=1404&amp;rtt_var=558&amp;sent=4&amp;recv=7&amp;lost=0&amp;retrans=0&amp;sent_bytes=2838&amp;recv_bytes=912&amp;delivery_rate=1891574&amp;cwnd=251&amp;unsent_bytes=0&amp;cid=a2308ed27470e898&amp;ts=329&amp;x=0"'} 
- body=None 
- </msg>
-<msg time="2025-05-12T09:41:03.345992" level="INFO">C:\Users\z0053u3m\PycharmProjects\ApiAutomation\.venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2025-05-12T09:41:03.346941" level="INFO">${response} = &lt;Response [204]&gt;</msg>
+<kw name="Get Request" owner="RequestsLibrary">
+<msg time="2025-05-13T09:11:24.056339" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2025-05-13T09:11:24.059629" level="FAIL">AttributeError: 'str' object has no attribute 'items'</msg>
 <var>${response}</var>
 <arg>mySession</arg>
 <arg>${endpoint}</arg>
-<arg>data=${body}</arg>
-<arg>headers=${header}</arg>
-<doc>*DEPRECATED* Please use `DELETE On Session` instead.</doc>
-<status status="PASS" start="2025-05-12T09:41:02.305446" elapsed="1.041552"/>
-</kw>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>${response.status_code}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-05-12T09:41:03.347556" elapsed="0.000983"/>
+<arg>auth=${auth}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<status status="FAIL" start="2025-05-13T09:11:24.056314" elapsed="0.007138">AttributeError: 'str' object has no attribute 'items'</status>
 </kw>
 <kw name="Convert To String" owner="BuiltIn">
-<msg time="2025-05-12T09:41:03.349766" level="INFO">${status_code} = 204</msg>
 <var>${status_code}</var>
 <arg>${response.status_code}</arg>
 <doc>Converts the given item to a Unicode string.</doc>
-<status status="PASS" start="2025-05-12T09:41:03.349179" elapsed="0.000615"/>
+<status status="NOT RUN" start="2025-05-13T09:11:24.063836" elapsed="0.000025"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${status_code}</arg>
-<arg>204</arg>
+<arg>200</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2025-05-12T09:41:03.350385" elapsed="0.000575"/>
+<status status="NOT RUN" start="2025-05-13T09:11:24.064006" elapsed="0.000017"/>
 </kw>
-<status status="PASS" start="2025-05-12T09:41:02.302308" elapsed="1.049342"/>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Status Code: ${status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-05-13T09:11:24.064135" elapsed="0.000015"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Response: ${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-05-13T09:11:24.064258" elapsed="0.000013"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Headers: ${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-05-13T09:11:24.064371" elapsed="0.000012"/>
+</kw>
+<status status="FAIL" start="2025-05-13T09:11:24.054557" elapsed="0.010009">AttributeError: 'str' object has no attribute 'items'</status>
 </test>
-<status status="PASS" start="2025-05-12T09:41:01.821696" elapsed="1.531545"/>
+<status status="FAIL" start="2025-05-13T09:11:23.604021" elapsed="0.461411"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="TC1 DELETE" id="s1" pass="1" fail="0" skip="0">TC1 DELETE</stat>
+<stat name="TC Basic GET" id="s1" pass="0" fail="1" skip="0">TC Basic GET</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-05-12T09:41:02.305467" level="WARN">Keyword 'RequestsLibrary.Delete Request' is deprecated. Please use `DELETE On Session` instead.</msg>
+<msg time="2025-05-13T09:11:24.056339" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
 </errors>
 </robot>
